@@ -61,6 +61,12 @@ def make_graph():
         undirected_yn = st.text_input("Make the graph undirected? (yes/no):", key="undirected")
         if undirected_yn.lower() == "yes":
             graph = undirected(graph)
+        elif undirected_yn.lower() == "no":
+            pass
+        else:
+            st.warning("Invalid response!")
+            st.stop()
+            
 
     return graph
 
