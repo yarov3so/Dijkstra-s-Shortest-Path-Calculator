@@ -174,7 +174,7 @@ def dijkstra():
         st.markdown(f"- Unexplored nodes: &nbsp; {", ".join(list(set(dist_unexp.keys())))}")
         
         current = sd_node(dist_unexp)
-        st.markdown(f"From the unexplored nodes listed above, we select a node with the lowest current distance from \"{start_node}\" : &nbsp; {current} ")
+        st.markdown(f"From the unexplored nodes listed above, we select a node with the lowest current distance from \"{start_node}\" : &nbsp; \"{current}\" ")
         
         del dist_unexp[current]
 
@@ -201,6 +201,7 @@ See my other [Math Help Tools](https://mathh3lptools.streamlit.app)""",unsafe_al
         st.stop()
     else:
         path = shortest_path(dist, end_node)
+        path = ["\""+str(node)+"\"" for node in path]
         path_str=" -> ".join(path)
         st.markdown(f"Shortest path from \"{start_node}\" to \"{end_node}\" : &nbsp; {path_str}")
 
