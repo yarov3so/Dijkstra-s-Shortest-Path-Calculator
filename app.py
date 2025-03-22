@@ -162,8 +162,10 @@ def dijkstra():
             st.markdown(f"Neighbourhood of \"{current}\" :")
         else:
             st.markdown(f"Out-neighbourhood of \"{current}\" :")
-            
-        st.json(graph[current])
+        try:
+            st.json(graph[current])
+        except:
+            st.markdown(f" Empty ")
 
         for node in set(graph[current]).intersection(set(dist_unexp.keys())):
             
