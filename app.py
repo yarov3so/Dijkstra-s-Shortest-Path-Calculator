@@ -54,7 +54,7 @@ def make_graph():
                 graph[node] = {}
 
                 for nbr in nbrs_node:
-                    dist_val = st.text_input(f" Distance between \"{node}\" and \"{nbr}\":", key=f"dist_{node}_{nbr}")
+                    dist_val = st.text_input(f" Enter the single-edge distance between \"{node}\" and \"{nbr}\":", key=f"dist_{node}_{nbr}")
                     if dist_val=="":
                         st.stop()
                     if dist_val:
