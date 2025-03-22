@@ -65,7 +65,7 @@ def make_graph():
     if nodes_str:
         nodes = comprehend(nodes_str)
         for node in nodes:
-            nbrs_node_str = st.text_input(f" Enter all the neighbours of \"{node}\", separated by commas (enter a single backspace to skip):", key=f"nbrs_{node}")
+            nbrs_node_str = st.text_input(f" Enter all the neighbours of \"{node}\", separated by commas (enter a single backspace to skip) :", key=f"nbrs_{node}")
             if nbrs_node_str=="":
                 st.stop()
             elif all(c == ' ' for c in nbrs_node_str) and len(nbrs_node_str) > 0:
@@ -74,7 +74,7 @@ def make_graph():
                 nbrs_node = comprehend(nbrs_node_str)
                 graph[node] = {}
                 for nbr in nbrs_node:
-                    dist_val = st.text_input(f" Enter the single-edge distance between \"{node}\" and \"{nbr}\":", key=f"dist_{node}_{nbr}")
+                    dist_val = st.text_input(f" Enter the single-edge distance between \"{node}\" and \"{nbr}\" :", key=f"dist_{node}_{nbr}")
                     if dist_val=="":
                         st.stop()
                     if dist_val:
@@ -88,7 +88,7 @@ def make_graph():
                             st.stop()
 
         undirected_yn = st.text_input("Make the graph undirected? (yes/no):", key="undirected")
-        st.markdown("*NB: This process automatically adds missing entries to ensure reciprocity, and reduces the number of edges between any pair of nodes to 1, assigning that edge the lowest weight among all the edges that originally linked that pair. As such, it can be handy for fixing typos and ommissions when dealing with undirected graphs. *")
+        st.markdown("* NB: This process automatically adds missing entries to ensure reciprocity, and reduces the number of edges between any pair of nodes to 1, assigning that edge the lowest weight among all the edges that originally linked that pair. As such, it can be handy for fixing typos and ommissions when dealing with undirected graphs. *")
         pre_undirected=copy.deepcopy(graph)
         
         if undirected_yn.lower() == "yes":
