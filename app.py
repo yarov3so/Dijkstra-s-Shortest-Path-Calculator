@@ -134,7 +134,7 @@ def dijkstra():
         return
 
     dist = {}
-    for node in graph:
+    for node in (set(graph.keys())).union(undirected(graph).keys()):
         dist[node] = {"curr": float("inf"), "prevnode": None}
 
     dist[start_node]["curr"] = 0
