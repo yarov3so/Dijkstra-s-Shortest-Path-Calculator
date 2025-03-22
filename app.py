@@ -48,7 +48,7 @@ def sd_node(dict):
             return key
 
 def df(dist, start):
-    return pd.DataFrame(dist).T.sort_values(by=["curr"]).rename(columns={"curr": f"Distance from \"{start}\"", "prevnode": "Previous Node"})
+    return pd.DataFrame(dist).T.sort_values(by=["curr"],ascending=True).rename(columns={"curr": f"Distance from \"{start}\"", "prevnode": "Previous Node"})
 
 def make_graph():
     st.text("")
@@ -168,7 +168,6 @@ def dijkstra():
         
         del dist_unexp[current]
 
-    st.text("")
     st.markdown("The distance table does not change when exploring the last remaining node, as it has no unexplored neighbours.")
     st.markdown("##### Final distance table:")
     st.dataframe(df(dist, start_node))
