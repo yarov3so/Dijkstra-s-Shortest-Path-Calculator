@@ -171,7 +171,7 @@ def dijkstra():
         st.dataframe(df(dist, start_node))
 
         st.markdown(f"- Marking \"{current}\" as explored")
-        st.markdown(f"- Unexplored nodes: &nbsp; {", ".join(list(set(dist_unexp.keys())))}")
+        st.markdown(f"- Unexplored nodes: &nbsp; {", ".join(["\""+str(node)+"\"" for node in list(set(dist_unexp.keys()))])}")
         
         current = sd_node(dist_unexp)
         st.markdown(f"From the unexplored nodes listed above, we select a node with the lowest current distance from \"{start_node}\" : &nbsp; \"{current}\" ")
