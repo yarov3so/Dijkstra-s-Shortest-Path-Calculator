@@ -89,6 +89,7 @@ def make_graph():
 
         undirected_yn = st.text_input("Make the graph undirected? (yes/no):", key="undirected")
         if undirected_yn.lower() == "yes":
+            pre_undirected=copy.deepcopy(graph)
             graph = undirected(graph)
         elif undirected_yn.lower() == "no":
             pass
@@ -99,13 +100,15 @@ def make_graph():
             st.stop()
             
 
-    return graph
+    return graph, pre_undirected==graph
 
 def dijkstra():
 
     st.markdown("This tool is a straightforward implementation of Dijkstra's algorithm for finding the shortest path from a node to any other node in a connected graph. Designed primarily as a learning tool, it focuses on clarity and simplicity to help students and beginners understand the core concepts behind the algorithm.")
-    
-    graph=make_graph()
+
+    graph_tuple=make_graph()
+    graph=graph_tuple[0]
+    undirected=graph_tuple[1]
     
     if not graph:
         st.warning("Graph is empty! Please input your graph.")
@@ -151,7 +154,10 @@ def dijkstra():
 
         st.markdown(f"Current distance of \"{current}\" from \"{start_node}\" : &nbsp;  {try_int(dist[current]["curr"])} ")
 
-        st.markdown(f"Neighbourhood of \"{current}\" :")
+        if undirected==True:
+            st.markdown(f"Neighbourhood of \"{current}\" :")
+        else:
+            st.markdown(f"Out-neighbourhood of \"{current}\" :")
             
         st.json(graph[current])
 
