@@ -117,7 +117,7 @@ def dijkstra():
     current = sd_node(dist_unexp)
 
     st.markdown(f"#### Initial unexplored nodes: {set(dist_unexp.keys())}")
-    st.markdown(f"#### Current distances from \"{start}\": ")
+    st.markdown(f"#### Current distances from \"{start_node}\": ")
     st.dataframe(df(dist, start_node))
 
     del dist_unexp[current]
