@@ -37,7 +37,7 @@ def df(dist, start):
     return pd.DataFrame(dist).T.rename(columns={"curr": f"Distance from \"{start}\"", "prevnode": "Previous Node"})
 
 def make_graph():
-    st.markdown("#### Enter your graph nodes")
+    st.markdown("##### Enter your graph nodes")
     nodes_str = st.text_input(" Enter all the nodes in the graph, separated by commas:", key="nodes")
     if nodes_str=="":
         st.stop()
@@ -93,7 +93,7 @@ def dijkstra():
         st.stop()
         return
 
-    st.markdown("#### Registered Graph:")
+    st.markdown("##### Registered Graph:")
     st.json(graph)
 
     start_node = st.text_input("Enter the starting node:", key="start_node")
@@ -116,21 +116,21 @@ def dijkstra():
     dist_unexp = copy.deepcopy(dist)
     current = sd_node(dist_unexp)
 
-    st.markdown(f"#### Initial unexplored nodes: {set(dist_unexp.keys())}")
-    st.markdown(f"#### Current distances from \"{start_node}\": ")
+    st.markdown(f"##### Initial unexplored nodes: {set(dist_unexp.keys())}")
+    st.markdown(f"##### Current distances from \"{start_node}\": ")
     st.dataframe(df(dist, start_node))
 
     del dist_unexp[current]
 
     while len(dist_unexp) != 0:
-        st.markdown(f"#### Exploring node: {current}")
+        st.markdown(f"##### Exploring node: {current}")
 
         for node in set(graph[current]).intersection(set(dist_unexp.keys())):
             dist_through_current = graph[current][node] + dist[current]["curr"]
 
             if dist_through_current < dist[node]["curr"]:
                 st.markdown(f"- Updating the distance of \"{node}\" from \"{start_node}\" : &nbsp; {dist[node]['curr']} -> {dist_through_current} ")
-                st.markdown(f"- Setting the previous node of \"{node}\" to \"{current}\" : &nbsp; \"{dist[node]["prevnode"]} \" -> \"{current}\" ")
+                st.markdown(f"- Setting the previous node of \"{node}\" to \"{current}\" : &nbsp; \"{dist[node]["prevnode"]}\" -> \"{current}\" ")
                 dist[node]["curr"] = dist_through_current
                 dist[node]["prevnode"] = current
 
@@ -141,11 +141,11 @@ def dijkstra():
         st.markdown(f"- Unexplored nodes: {set(dist_unexp.keys())}")
         
         current = sd_node(dist_unexp)
-        st.markdown(f"From the unexplored nodes listed above, we select the node with the lowest current distance from {start_node}: {current}")
+        st.markdown(f"From the unexplored nodes listed above, we select the node with the lowest current distance from \"{start_node}\" : &nbsp; \"{current}\" ")
         
         del dist_unexp[current]
 
-    st.markdown("#### Final distance table:")
+    st.markdown("##### Final distance table:")
     st.dataframe(df(dist, start_node))
 
     st.markdown(f"You can now view the shortest paths from \"{start_node}\" to other nodes.")
@@ -157,7 +157,7 @@ def dijkstra():
             st.stop()
         else:
             path = shortest_path(dist, end_node)
-            st.markdown(f"#### Shortest path from \"{start_node}\" to \"{end_node}\": {path}")
+            st.markdown(f"##### Shortest path from \"{start_node}\" to \"{end_node}\": {path}")
 
     return df(dist, start_node)
 
