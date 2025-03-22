@@ -165,7 +165,7 @@ def dijkstra():
         try:
             st.json(graph[current])
         except:
-            st.markdown(f" Empty ")
+            st.markdown(f" *Empty* ")
 
         if current in graph:
 
