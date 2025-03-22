@@ -150,7 +150,7 @@ def dijkstra():
             dist_through_current = graph[current][node] + dist[current]["curr"]
 
             if dist_through_current < dist[node]["curr"]:
-                st.markdown(f"- Updating the distance of \"{node}\" from \"{start_node}\" : &nbsp; {try_int(dist[node]['curr'])} -> {try_int(dist_through_current)} ")
+                st.markdown(f"- Updating the distance of \"{node}\" from \"{start_node}\" : &nbsp; {try_int(dist[node]['curr'])} -> {try_int(dist[current]["curr"])} + {try_int(graph[current][node])} = {try_int(dist_through_current)} ")
                 st.markdown(f"- Setting the previous node of \"{node}\" to \"{current}\" : &nbsp; \"{dist[node]["prevnode"]}\" -> \"{current}\" ")
                 dist[node]["curr"] = dist_through_current
                 dist_unexp[node]["curr"] = dist_through_current
@@ -169,8 +169,9 @@ def dijkstra():
         del dist_unexp[current]
 
     st.text("")
+    st.markdown("The distance table does not change when exploring the last remaining node, as it has no unexplored neighbours.")
     st.markdown("##### Final distance table:")
-    st.dataframe(df(dist, start_node))
+    st.dataframe(df(dist, start_node).sort_values(by=["curr"]))
 
     st.text("")
     st.markdown(f"You can now view the shortest paths from \"{start_node}\" to other nodes.")
