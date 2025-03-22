@@ -53,7 +53,7 @@ def make_graph():
 
                 for nbr in nbrs_node:
                     dist_val = st.text_input(f" Distance between \"{node}\" and \"{nbr}\":", key=f"dist_{node}_{nbr}")
-                    if dist_val==""
+                    if dist_val=="":
                         st.stop()
                     if dist_val:
                         try:
