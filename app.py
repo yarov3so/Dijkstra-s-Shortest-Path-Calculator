@@ -26,10 +26,14 @@ def undirected(graph):
     for node_1 in graph:
         for node_2 in graph[node_1]:
             if node_2 in undirected_graph:
-                undirected_graph[node_2][node_1] = graph[node_1][node_2]
+                if node_1 in graph[node_2]:
+                    undirected_graph[node_2][node_1] = min(graph[node_2][node_1],graph[node_1][node_2])
+                else:
+                    undirected_graph[node_2][node_1] = graph[node_1][node_2]
             else:
                 undirected_graph[node_2] = {}
                 undirected_graph[node_2][node_1] = graph[node_1][node_2]
+                
     return undirected_graph
 
 def shortest_path(dist, end):
