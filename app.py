@@ -129,8 +129,8 @@ def dijkstra():
             dist_through_current = graph[current][node] + dist[current]["curr"]
 
             if dist_through_current < dist[node]["curr"]:
-                st.markdown(f"- Updating the distance of \"{node}\" from \"{start_node}\": {dist[node]['curr']} -> {dist_through_current}")
-                st.markdown(f"- Setting the previous node of \"{node}\" to \"{current}\": {dist[node]["prevnode"]} -> {current}")
+                st.markdown(f"- Updating the distance of \"{node}\" from \"{start_node}\" : &nbsp; {dist[node]['curr']} -> {dist_through_current} ")
+                st.markdown(f"- Setting the previous node of \"{node}\" to \"{current}\" : &nbsp; \"{dist[node]["prevnode"]} \" -> \"{current}\" ")
                 dist[node]["curr"] = dist_through_current
                 dist[node]["prevnode"] = current
 
