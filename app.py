@@ -88,10 +88,13 @@ def make_graph():
                             st.stop()
 
         undirected_yn = st.text_input("Make the graph undirected? (yes/no):", key="undirected")
+        pre_undirected=copy.deepcopy(graph)
+        
         if undirected_yn.lower() == "yes":
-            pre_undirected=copy.deepcopy(graph)
             graph = undirected(graph)
+            check_undirected=True
         elif undirected_yn.lower() == "no":
+            check_undirected= pre_undirected==graph
             pass
         elif undirected_yn.lower() == "":
             st.stop()
@@ -100,7 +103,7 @@ def make_graph():
             st.stop()
             
 
-    return graph, pre_undirected==graph
+    return graph, check_undirected
 
 def dijkstra():
 
