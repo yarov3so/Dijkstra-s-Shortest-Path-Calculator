@@ -46,19 +46,23 @@ def make_graph():
     if nodes_str:
         nodes = comprehend(nodes_str)
         for node in nodes:
-            nbrs_node_str = st.text_input(f" Enter all the neighbours of \"{node}\", separated by commas:", key=f"nbrs_{node}")
+            nbrs_node_str = st.text_input(f" Enter all the neighbours of \"{node}\", separated by commas (enter a single backspace to skip):", key=f"nbrs_{node}")
             if nbrs_node_str=="":
                 st.stop()
+            elif all(c == ' ' for c in nbrs_node_str) and len(nbrs_node_str) > 0:
+                graph[node] = {}
             if nbrs_node_str:
                 nbrs_node = comprehend(nbrs_node_str)
                 graph[node] = {}
-
                 for nbr in nbrs_node:
                     dist_val = st.text_input(f" Enter the single-edge distance between \"{node}\" and \"{nbr}\":", key=f"dist_{node}_{nbr}")
                     if dist_val=="":
                         st.stop()
                     if dist_val:
                         try:
+                            if float(dist_val)<0:
+                                st.warning("Only positive single-edge distances are allowed!")
+                                st.stop()
                             graph[node][nbr] = float(dist_val)
                         except:
                             st.warning(f" Invalid distance for {node} -> {nbr}. Please enter a numeric value.")
@@ -80,6 +84,8 @@ def make_graph():
 
 def dijkstra():
 
+    st.markdown("This tool is a straightforward implementation of Dijkstra's algorithm for finding the shortest path from a node to any other node in a connected graph. Designed primarily as a learning tool, it focuses on clarity and simplicity to help students and beginners understand the core concepts behind the algorithm.")
+    
     graph=make_graph()
     
     if not graph:
