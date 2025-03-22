@@ -87,8 +87,8 @@ def make_graph():
                             st.warning(f" Invalid distance for {node} -> {nbr}. Please enter a numeric value.")
                             st.stop()
 
-        undirected_yn = st.text_input("""Make the graph undirected?  
-        *This process automatically adds missing entries to ensure reciprocity, and reduces the number of edges between any pair of nodes to 1, assigning that edge the lowest weight among all the edges that originally linked that pair. As such, it can be handy for fixing typos and ommissions when dealing with undirected graphs. * (yes/no):""", key="undirected")
+        undirected_yn = st.text_input("Make the graph undirected? (yes/no):", key="undirected")
+        st.markdown("*NB: This process automatically adds missing entries to ensure reciprocity, and reduces the number of edges between any pair of nodes to 1, assigning that edge the lowest weight among all the edges that originally linked that pair. As such, it can be handy for fixing typos and ommissions when dealing with undirected graphs. *")
         pre_undirected=copy.deepcopy(graph)
         
         if undirected_yn.lower() == "yes":
