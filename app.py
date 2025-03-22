@@ -159,14 +159,14 @@ def dijkstra():
     if end_node:
         if end_node=="":
             st.text("")
-st.markdown("""*Crafted by yarov3so*   
+            st.markdown("""*Crafted by yarov3so*   
 <a href="https://www.buymeacoffee.com/yarov3so" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="width: 9em; height: auto; padding-top: 0.7em; padding-bottom: 1em" ></a>  
 See my other [Math Help Tools](https://mathh3lptools.streamlit.app)""",unsafe_allow_html=True)
             st.stop()
         if end_node not in dist:
             st.warning("Destination node not found in graph!")
             st.text("")
-st.markdown("""*Crafted by yarov3so*   
+            st.markdown("""*Crafted by yarov3so*   
 <a href="https://www.buymeacoffee.com/yarov3so" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="width: 9em; height: auto; padding-top: 0.7em; padding-bottom: 1em" ></a>  
 See my other [Math Help Tools](https://mathh3lptools.streamlit.app)""",unsafe_allow_html=True)
             st.stop()
@@ -176,8 +176,8 @@ See my other [Math Help Tools](https://mathh3lptools.streamlit.app)""",unsafe_al
 
             st.text("")
             st.markdown("""*Crafted by yarov3so*   
-<a href="https://www.buymeacoffee.com/yarov3so" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="width: 9em; height: auto; padding-top: 0.7em; padding-bottom: 1em" ></a>  
-See my other [Math Help Tools](https://mathh3lptools.streamlit.app)""",unsafe_allow_html=True)
+            <a href="https://www.buymeacoffee.com/yarov3so" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="width: 9em; height: auto; padding-top: 0.7em; padding-bottom: 1em" ></a>  
+            See my other [Math Help Tools](https://mathh3lptools.streamlit.app)""",unsafe_allow_html=True)
 
     return df(dist, start_node)
 
