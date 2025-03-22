@@ -139,7 +139,7 @@ def dijkstra():
     st.text("")
     st.markdown(f"##### Step-by-Step Breakdown of Dijkstra's Algorithm")
     st.text("")
-    st.markdown(f"Initial unexplored nodes: {set(dist_unexp.keys())}")
+    st.markdown(f"Initial unexplored nodes: &nbsp; {", ".join(list(set(dist_unexp.keys())))}")
     st.markdown(f"Current distances from \"{start_node}\" : ")
     st.dataframe(df(dist, start_node))
 
@@ -161,7 +161,7 @@ def dijkstra():
 
             if dist_through_current < dist[node]["curr"]:
                 st.markdown(f"- Updating the distance of \"{node}\" from \"{start_node}\" : &nbsp; {try_int(dist[node]['curr'])} -> {try_int(dist[current]["curr"])} + {try_int(graph[current][node])} = {try_int(dist_through_current)} ")
-                st.markdown(f"- Setting the previous node of \"{node}\" to \"{current}\" : &nbsp; {dist[node]["prevnode"]} -> {current} ")
+                st.markdown(f"- Setting the previous node of \"{node}\" to \"{current}\" ") # : &nbsp; {dist[node]["prevnode"]} -> {current} 
                 dist[node]["curr"] = dist_through_current
                 dist_unexp[node]["curr"] = dist_through_current
                 dist[node]["prevnode"] = current
