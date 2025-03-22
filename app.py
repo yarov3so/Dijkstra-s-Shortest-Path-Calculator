@@ -127,7 +127,7 @@ def dijkstra():
     del dist_unexp[current]
 
     while len(dist_unexp) != 0:
-        st.markdown(f"##### Exploring node: &nbsp \"{current}\"")
+        st.markdown(f"##### Exploring node: &nbsp; \"{current}\"")
 
         for node in set(graph[current]).intersection(set(dist_unexp.keys())):
             dist_through_current = graph[current][node] + dist[current]["curr"]
@@ -161,7 +161,7 @@ def dijkstra():
             st.stop()
         else:
             path = shortest_path(dist, end_node)
-            st.markdown(f"##### Shortest path from \"{start_node}\" to \"{end_node}\": {path}")
+            st.markdown(f"Shortest path from \"{start_node}\" to \"{end_node}\" : &nbsp; {path}")
 
     return df(dist, start_node)
 
