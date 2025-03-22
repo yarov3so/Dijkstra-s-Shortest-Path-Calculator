@@ -168,7 +168,7 @@ def dijkstra():
             st.markdown(f" *Empty :(* ")
 
         if current in graph:
-
+            i=0
             for node in set(graph[current]).intersection(set(dist_unexp.keys())):
                 
                 dist_through_current = graph[current][node] + dist[current]["curr"]
@@ -180,9 +180,13 @@ def dijkstra():
                     dist_unexp[node]["curr"] = dist_through_current
                     dist[node]["prevnode"] = current
                     dist_unexp[node]["prevnode"] = dist_through_current
+                    i+=1
     
-            st.markdown("The current distance table becomes:")
-            st.dataframe(df(dist, start_node))
+            if i==0:
+                st.markdown("The current distance table remains unchanged.")
+            else:
+                st.markdown("The current distance table becomes:")
+                st.dataframe(df(dist, start_node))
 
         st.markdown(f"- Marking \"{current}\" as explored")
         st.markdown(f"- Unexplored nodes: &nbsp; {", ".join(["\""+str(node)+"\"" for node in list(set(dist_unexp.keys()))])}")
