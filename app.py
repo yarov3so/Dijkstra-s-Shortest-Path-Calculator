@@ -112,7 +112,7 @@ def dijkstra():
 
     graph_tuple=make_graph()
     graph=graph_tuple[0]
-    undirected=graph_tuple[1]
+    undirected_tf=graph_tuple[1]
     
     if not graph:
         st.warning("Graph is empty! Please input your graph.")
@@ -158,7 +158,7 @@ def dijkstra():
 
         st.markdown(f"Current distance of \"{current}\" from \"{start_node}\" : &nbsp;  {try_int(dist[current]["curr"])} ")
 
-        if undirected==True:
+        if undirected_tf==True:
             st.markdown(f"Neighbourhood of \"{current}\" :")
         else:
             st.markdown(f"Out-neighbourhood of \"{current}\" :")
