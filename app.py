@@ -51,7 +51,7 @@ def make_graph():
                 st.stop()
             elif all(c == ' ' for c in nbrs_node_str) and len(nbrs_node_str) > 0:
                 graph[node] = {}
-            if nbrs_node_str:
+            else:
                 nbrs_node = comprehend(nbrs_node_str)
                 graph[node] = {}
                 for nbr in nbrs_node:
