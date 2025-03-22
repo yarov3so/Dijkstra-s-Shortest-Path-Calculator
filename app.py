@@ -127,7 +127,7 @@ def dijkstra():
     del dist_unexp[current]
 
     while len(dist_unexp) != 0:
-        st.markdown(f"##### Exploring node: {current}")
+        st.markdown(f"##### Exploring node: &nbsp \"{current}\"")
 
         for node in set(graph[current]).intersection(set(dist_unexp.keys())):
             dist_through_current = graph[current][node] + dist[current]["curr"]
