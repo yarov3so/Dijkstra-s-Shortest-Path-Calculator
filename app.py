@@ -63,6 +63,8 @@ def make_graph():
             graph = undirected(graph)
         elif undirected_yn.lower() == "no":
             pass
+        elif undirected_yn.lower() == "":
+            st.stop()
         else:
             st.warning("Invalid response!")
             st.stop()
