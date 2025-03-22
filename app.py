@@ -92,9 +92,10 @@ def dijkstra():
         st.warning("Graph is empty! Please input your graph.")
         st.stop()
         return
-
+    st.text("")
     st.markdown("##### Registered Graph:")
     st.json(graph)
+    st.text("")
 
     start_node = st.text_input("Enter the starting node:", key="start_node")
     
@@ -116,8 +117,9 @@ def dijkstra():
     dist_unexp = copy.deepcopy(dist)
     current = sd_node(dist_unexp)
 
-    st.markdown(f"##### Initial unexplored nodes: {set(dist_unexp.keys())}")
-    st.markdown(f"##### Current distances from \"{start_node}\": ")
+    st.text("")
+    st.markdown(f"Initial unexplored nodes: {set(dist_unexp.keys())}")
+    st.markdown(f"Current distances from \"{start_node}\": ")
     st.dataframe(df(dist, start_node))
 
     del dist_unexp[current]
