@@ -201,7 +201,8 @@ See my other [Math Help Tools](https://mathh3lptools.streamlit.app)""",unsafe_al
         st.stop()
     else:
         path = shortest_path(dist, end_node)
-        st.markdown(f"Shortest path from \"{start_node}\" to \"{end_node}\" : &nbsp; {path}")
+        path_str=" -> ".join(path)
+        st.markdown(f"Shortest path from \"{start_node}\" to \"{end_node}\" : &nbsp; {path_str}")
 
         st.text("")
         st.markdown("""*Crafted by yarov3so*   
