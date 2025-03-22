@@ -153,7 +153,7 @@ def dijkstra():
     st.dataframe(df(dist, start_node))
 
     st.markdown(f"You can now view the shortest paths from \"{start_node}\" to other nodes.")
-    end_node = st.text_input("Enter destination node to see the shortest path:", key="destination_node")
+    end_node = st.text_input("Enter destination node to see the shortest path:", value="", key="destination_node")
 
     if end_node:
         if end_node=="":
