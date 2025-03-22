@@ -146,16 +146,19 @@ def dijkstra():
         st.markdown(f"##### Exploring node: &nbsp; \"{current}\"")
 
         for node in set(graph[current]).intersection(set(dist_unexp.keys())):
+            
             dist_through_current = graph[current][node] + dist[current]["curr"]
 
             if dist_through_current < dist[node]["curr"]:
                 st.markdown(f"- Updating the distance of \"{node}\" from \"{start_node}\" : &nbsp; {try_int(dist[node]['curr'])} -> {try_int(dist_through_current)} ")
                 st.markdown(f"- Setting the previous node of \"{node}\" to \"{current}\" : &nbsp; \"{dist[node]["prevnode"]}\" -> \"{current}\" ")
                 dist[node]["curr"] = dist_through_current
+                dist_unexp[node]["curr"] = dist_through_current
                 dist[node]["prevnode"] = current
+                dist_unexp[node]["prevnode"] = dist_through_current
 
         st.markdown("The current distance table becomes:")
-        st.dataframe(df(dist, start_node))
+        st.dataframe(df(dist, start_node).sort_values(by=["curr"]))
 
         st.markdown(f"- Marking \"{current}\" as explored")
         st.markdown(f"- Unexplored nodes: {set(dist_unexp.keys())}")
