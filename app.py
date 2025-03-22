@@ -37,7 +37,8 @@ def df(dist, start):
     return pd.DataFrame(dist).T.rename(columns={"curr": f"Distance from \"{start}\"", "prevnode": "Previous Node"})
 
 def make_graph():
-    st.markdown("##### Enter your graph nodes")
+    st.text("")
+    st.markdown("##### Graph Initialization")
     nodes_str = st.text_input(" Enter all the nodes in the graph, separated by commas:", key="nodes")
     if nodes_str=="":
         st.stop()
@@ -118,8 +119,9 @@ def dijkstra():
     current = sd_node(dist_unexp)
 
     st.text("")
+    st.markdown(f"##### Step-by-step breakdown of Dijkstra's algorithm")
     st.markdown(f"Initial unexplored nodes: {set(dist_unexp.keys())}")
-    st.markdown(f"Current distances from \"{start_node}\": ")
+    st.markdown(f"Current distances from \"{start_node}\" : ")
     st.dataframe(df(dist, start_node))
 
     del dist_unexp[current]
