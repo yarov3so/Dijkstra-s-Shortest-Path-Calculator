@@ -70,18 +70,21 @@ def dijkstra():
     
     if not graph:
         st.warning("Graph is empty! Please input your graph.")
-        return
-
-    if start_node not in graph:
-        st.warning("Starting node must be in the graph nodes!")
+        st.stop()
         return
 
     st.markdown("### Registered Graph:")
     st.json(graph)
 
     start_node = st.text_input("Enter the starting node:", key="start_node")
+    
     if start_node=="":
         st.stop()
+
+    if start_node not in graph:
+        st.warning("Starting node must be in the graph nodes!")
+        st.stop()
+        return
 
     dist = {}
     for node in graph:
@@ -128,6 +131,7 @@ def dijkstra():
     if end_node:
         if end_node not in dist:
             st.warning("Destination node not found in graph!")
+            st.stop()
         else:
             path = shortest_path(dist, end_node)
             st.markdown(f"### Shortest path from \"{start_node}\" to \"{end_node}\": {path}")
