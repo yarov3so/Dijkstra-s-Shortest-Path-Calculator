@@ -152,7 +152,7 @@ def dijkstra():
 
     del dist_unexp[current]
 
-    while len(dist_unexp) != 0:
+    while (len(dist_unexp) != 0) and (current in graph):
         st.text("")
         st.markdown(f"##### Exploring node: &nbsp; \"{current}\" ")
 
