@@ -60,7 +60,7 @@ def make_graph():
                     if dist_val:
                         try:
                             graph[node][nbr] = float(dist_val)
-                        except ValueError:
+                        except:
                             st.warning(f" Invalid distance for {node} -> {nbr}. Please enter a numeric value.")
                             st.stop()
 
