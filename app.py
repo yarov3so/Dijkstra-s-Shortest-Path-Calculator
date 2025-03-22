@@ -37,7 +37,7 @@ def df(dist, start):
     return pd.DataFrame(dist).T.rename(columns={"curr": f"Distance from \"{start}\"", "prevnode": "Previous Node"})
 
 def make_graph():
-    st.markdown("###Enter your graph nodes")
+    st.markdown("### Enter your graph nodes")
     nodes_str = st.text_input(" Enter all the nodes in the graph, separated by commas:", key="nodes")
     graph = {}
 
@@ -73,7 +73,7 @@ def dijkstra(graph, start_node):
         st.warning("Starting node must be in the graph nodes!")
         return
 
-    st.markdown("###Registered Graph:")
+    st.markdown("### Registered Graph:")
     st.json(graph)
 
     dist = {}
@@ -86,13 +86,13 @@ def dijkstra(graph, start_node):
     dist_unexp = copy.deepcopy(dist)
     current = sd_node(dist_unexp)
 
-    st.markdown(f"###Initial unexplored nodes: {set(dist_unexp.keys())}")
+    st.markdown(f"### Initial unexplored nodes: {set(dist_unexp.keys())}")
     st.dataframe(df(dist, start_node))
 
     del dist_unexp[current]
 
     while len(dist_unexp) != 0:
-        st.markdown(f"###Exploring node: {current}")
+        st.markdown(f"### Exploring node: {current}")
 
         for node in set(graph[current]).intersection(set(dist_unexp.keys())):
             dist_through_current = graph[current][node] + dist[current]["curr"]
@@ -103,7 +103,7 @@ def dijkstra(graph, start_node):
                 dist[node]["curr"] = dist_through_current
                 dist[node]["prevnode"] = current
 
-        st.markdown("###Updated distance table:")
+        st.markdown("### Updated distance table:")
         st.dataframe(df(dist, start_node))
 
         st.markdown(f"- Marking \"{current}\" as explored.")
@@ -112,7 +112,7 @@ def dijkstra(graph, start_node):
         current = sd_node(dist_unexp)
         del dist_unexp[current]
 
-    st.markdown("###Final distance table:")
+    st.markdown("### Final distance table:")
     st.dataframe(df(dist, start_node))
 
     st.markdown(f"You can now view the shortest paths from \"{start_node}\" to other nodes.")
@@ -123,7 +123,7 @@ def dijkstra(graph, start_node):
             st.warning("Destination node not found in graph!")
         else:
             path = shortest_path(dist, end_node)
-            st.markdown(f"###Shortest path from \"{start_node}\" to \"{end_node}\": {path}")
+            st.markdown(f"### Shortest path from \"{start_node}\" to \"{end_node}\": {path}")
 
     return df(dist, start_node)
 
