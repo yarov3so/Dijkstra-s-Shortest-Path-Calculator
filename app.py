@@ -134,6 +134,7 @@ def dijkstra():
 
     st.text("")
     st.markdown(f"##### Step-by-Step Breakdown of Dijkstra's Algorithm")
+    st.text("")
     st.markdown(f"Initial unexplored nodes: {set(dist_unexp.keys())}")
     st.markdown(f"Current distances from \"{start_node}\" : ")
     st.dataframe(df(dist, start_node))
@@ -141,6 +142,7 @@ def dijkstra():
     del dist_unexp[current]
 
     while len(dist_unexp) != 0:
+        st.text("")
         st.markdown(f"##### Exploring node: &nbsp; \"{current}\"")
 
         for node in set(graph[current]).intersection(set(dist_unexp.keys())):
