@@ -139,7 +139,7 @@ def dijkstra():
     st.text("")
     st.markdown(f"##### Step-by-Step Breakdown of Dijkstra's Algorithm")
     st.text("")
-    st.markdown(f"Initial unexplored nodes: &nbsp; {", ".join(list(set(dist_unexp.keys())))}")
+    st.markdown(f"Initial unexplored nodes: &nbsp; {", ".join(["\""+str(node)+"\"" for node in list(set(dist_unexp.keys()))])}")
     st.markdown(f"Current distances from \"{start_node}\" : ")
     st.dataframe(df(dist, start_node))
 
