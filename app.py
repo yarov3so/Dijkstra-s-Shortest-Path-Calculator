@@ -46,6 +46,7 @@ def sd_node(dict):
     for key in dict:
         if dict[key]['curr'] == min_dist:
             return key
+    return None
 
 def df(dist, start):
     return pd.DataFrame(dist).T.rename(columns={"curr": f"Distance from \"{start}\"", "prevnode": "Previous Node"})
