@@ -44,19 +44,23 @@ def make_graph():
     if nodes_str:
         nodes = comprehend(nodes_str)
         for node in nodes:
-            nbrs_node_str = st.text_input(f" Enter all the neighbours of \"{node}\" separated by commas:", key=f"nbrs_{node}")
-
+            nbrs_node_str = st.text_input(f" Enter all the neighbours of \"{node}\", separated by commas:", key=f"nbrs_{node}")
+            if nbrs_node_str=="":
+                st.stop()
             if nbrs_node_str:
                 nbrs_node = comprehend(nbrs_node_str)
                 graph[node] = {}
 
                 for nbr in nbrs_node:
                     dist_val = st.text_input(f" Distance between \"{node}\" and \"{nbr}\":", key=f"dist_{node}_{nbr}")
+                    if dist_val==""
+                        st.stop()
                     if dist_val:
                         try:
                             graph[node][nbr] = float(dist_val)
                         except ValueError:
                             st.warning(f" Invalid distance for {node} -> {nbr}. Please enter a numeric value.")
+                            st.stop()
 
         undirected_yn = st.text_input("Make the graph undirected? (yes/no):", key="undirected")
         if undirected_yn.lower() == "yes":
