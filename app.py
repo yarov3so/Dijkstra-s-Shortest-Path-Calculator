@@ -147,7 +147,13 @@ def dijkstra():
 
     while len(dist_unexp) != 0:
         st.text("")
-        st.markdown(f"##### Exploring node: &nbsp; \"{current}\"")
+        st.markdown(f"##### Exploring node: &nbsp; \"{current}\" &nbsp; (current distance from \"{start_node}\" : {try_int(dist[current]["curr"])} ")
+
+        if undirected_yn=="yes":
+            st.markdown(f"Out-neighbourhood of \"{current}\":")
+        else:
+            st.markdown(f"Neighbourhoof of \"{current}\":"
+        st.json(graph[current])
 
         for node in set(graph[current]).intersection(set(dist_unexp.keys())):
             
