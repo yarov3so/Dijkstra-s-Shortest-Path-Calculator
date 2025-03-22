@@ -147,7 +147,9 @@ def dijkstra():
 
     while len(dist_unexp) != 0:
         st.text("")
-        st.markdown(f"##### Exploring node: &nbsp; \"{current}\" &nbsp; (current distance from \"{start_node}\" : {try_int(dist[current]["curr"])} ")
+        st.markdown(f"##### Exploring node: &nbsp; \"{current}\" ")
+
+        st.markdown(f"Current distance of \"{current}\" from \"{start_node}\" : {try_int(dist[current]["curr"])} ")
 
         st.markdown(f"Neighbourhood of \"{current}\" :")
             
