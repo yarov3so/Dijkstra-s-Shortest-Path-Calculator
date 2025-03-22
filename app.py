@@ -94,7 +94,7 @@ def make_graph():
             graph = undirected(graph)
             check_undirected=True
         elif undirected_yn.lower() == "no":
-            check_undirected= pre_undirected==graph
+            check_undirected= undirected(pre_undirected)==graph
             pass
         elif undirected_yn.lower() == "":
             st.stop()
