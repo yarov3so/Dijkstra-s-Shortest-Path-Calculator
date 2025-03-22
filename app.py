@@ -88,7 +88,7 @@ def make_graph():
                             st.stop()
 
         undirected_yn = st.text_input("Make the graph undirected? (yes/no):", key="undirected")
-        st.markdown("_ NB: This process automatically adds missing entries to ensure reciprocity, and reduces the number of edges between any pair of nodes to 1, assigning that edge the lowest weight among all the edges that originally linked that pair. As such, it can be handy for fixing typos and ommissions when dealing with undirected graphs. _")
+        st.markdown(f"*This process automatically adds missing entries to ensure reciprocity, and reduces the number of edges between any pair of nodes to 1, assigning that edge the lowest weight among all the edges that originally linked that pair. As such, it can be handy for fixing typos and ommissions when dealing with undirected graphs.*")
         pre_undirected=copy.deepcopy(graph)
         
         if undirected_yn.lower() == "yes":
