@@ -149,7 +149,7 @@ def dijkstra():
         st.text("")
         st.markdown(f"##### Exploring node: &nbsp; \"{current}\" ")
 
-        st.markdown(f"Current distance of \"{current}\" from \"{start_node}\" : {try_int(dist[current]["curr"])} ")
+        st.markdown(f"Current distance of \"{current}\" from \"{start_node}\" : &nbsp;  {try_int(dist[current]["curr"])} ")
 
         st.markdown(f"Neighbourhood of \"{current}\" :")
             
