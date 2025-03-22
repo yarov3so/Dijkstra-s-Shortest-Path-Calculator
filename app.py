@@ -13,7 +13,7 @@ def try_int(num):
     try:
         num_int=int(num)
     except:
-        None
+        return num
     if num==num_int:
         return num_int
     elif (num<=0.1 and num>=0) or (num>=-0.1 and num<=0):
