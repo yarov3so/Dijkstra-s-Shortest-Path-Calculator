@@ -65,6 +65,9 @@ def make_graph():
     return graph
 
 def dijkstra(graph, start_node):
+
+    graph=make_graph()
+    
     if not graph:
         st.warning("Graph is empty! Please input your graph.")
         return
@@ -75,6 +78,10 @@ def dijkstra(graph, start_node):
 
     st.markdown("### Registered Graph:")
     st.json(graph)
+
+    start_node = st.text_input("Enter the starting node:", key="start_node")
+    if start_node=="":
+        st.stop()
 
     dist = {}
     for node in graph:
@@ -127,14 +134,7 @@ def dijkstra(graph, start_node):
 
     return df(dist, start_node)
 
-# Streamlit UI logic
 st.title("Dijkstra's Shortest Path Calculator")
 
-st.session_state.graph = make_graph()
+dijkstra()
 
-if "graph" in st.session_state and st.session_state.graph:
-    
-    start_node = st.text_input("Enter the starting node for Dijkstra's Algorithm:", key="start_node")
-
-    if st.button("Run Dijkstra's Algorithm"):
-        dijkstra(st.session_state.graph, start_node)
