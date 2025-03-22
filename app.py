@@ -155,13 +155,29 @@ def dijkstra():
     st.markdown(f"You can now view the shortest paths from \"{start_node}\" to other nodes.")
     end_node = st.text_input("Enter destination node to see the shortest path:", key="destination_node")
 
+
     if end_node:
+        if end_node=="":
+            st.text("")
+st.markdown("""*Crafted by yarov3so*   
+<a href="https://www.buymeacoffee.com/yarov3so" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="width: 9em; height: auto; padding-top: 0.7em; padding-bottom: 1em" ></a>  
+See my other [Math Help Tools](https://mathh3lptools.streamlit.app)""",unsafe_allow_html=True)
+            st.stop()
         if end_node not in dist:
             st.warning("Destination node not found in graph!")
+            st.text("")
+st.markdown("""*Crafted by yarov3so*   
+<a href="https://www.buymeacoffee.com/yarov3so" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="width: 9em; height: auto; padding-top: 0.7em; padding-bottom: 1em" ></a>  
+See my other [Math Help Tools](https://mathh3lptools.streamlit.app)""",unsafe_allow_html=True)
             st.stop()
         else:
             path = shortest_path(dist, end_node)
             st.markdown(f"Shortest path from \"{start_node}\" to \"{end_node}\" : &nbsp; {path}")
+
+            st.text("")
+            st.markdown("""*Crafted by yarov3so*   
+<a href="https://www.buymeacoffee.com/yarov3so" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="width: 9em; height: auto; padding-top: 0.7em; padding-bottom: 1em" ></a>  
+See my other [Math Help Tools](https://mathh3lptools.streamlit.app)""",unsafe_allow_html=True)
 
     return df(dist, start_node)
 
