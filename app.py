@@ -64,7 +64,7 @@ def make_graph():
 
     return graph
 
-def dijkstra(graph, start_node):
+def dijkstra():
 
     graph=make_graph()
     
