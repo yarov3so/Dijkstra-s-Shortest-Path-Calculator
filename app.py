@@ -39,6 +39,8 @@ def df(dist, start):
 def make_graph():
     st.markdown("### Enter your graph nodes")
     nodes_str = st.text_input(" Enter all the nodes in the graph, separated by commas:", key="nodes")
+    if nodes_str=="":
+        st.stop()
     graph = {}
 
     if nodes_str:
