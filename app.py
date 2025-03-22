@@ -48,7 +48,7 @@ def sd_node(dict):
             return key
 
 def df(dist, start):
-    return pd.DataFrame(dist).T.rename(columns={"curr": f"Distance from \"{start}\"", "prevnode": "Previous Node"})
+    return pd.DataFrame(dist).T.sort_values(by=["curr"]).rename(columns={"curr": f"Distance from \"{start}\"", "prevnode": "Previous Node"})
 
 def make_graph():
     st.text("")
@@ -158,7 +158,7 @@ def dijkstra():
                 dist_unexp[node]["prevnode"] = dist_through_current
 
         st.markdown("The current distance table becomes:")
-        st.dataframe(df(dist, start_node).sort_values(by=["curr"]))
+        st.dataframe(df(dist, start_node))
 
         st.markdown(f"- Marking \"{current}\" as explored")
         st.markdown(f"- Unexplored nodes: {set(dist_unexp.keys())}")
@@ -171,7 +171,7 @@ def dijkstra():
     st.text("")
     st.markdown("The distance table does not change when exploring the last remaining node, as it has no unexplored neighbours.")
     st.markdown("##### Final distance table:")
-    st.dataframe(df(dist, start_node).sort_values(by=["curr"]))
+    st.dataframe(df(dist, start_node))
 
     st.text("")
     st.markdown(f"You can now view the shortest paths from \"{start_node}\" to other nodes.")
