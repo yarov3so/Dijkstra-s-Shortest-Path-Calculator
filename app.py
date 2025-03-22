@@ -174,7 +174,7 @@ def dijkstra():
         st.markdown(f"- Unexplored nodes: &nbsp; {", ".join(list(set(dist_unexp.keys())))}")
         
         current = sd_node(dist_unexp)
-        st.markdown(f"From the unexplored nodes listed above, we select a node with the lowest current distance from \"{start_node}\" : &nbsp; \"{current}\" ")
+        st.markdown(f"From the unexplored nodes listed above, we select a node with the lowest current distance from \"{start_node}\" : &nbsp; {current} ")
         
         del dist_unexp[current]
 
