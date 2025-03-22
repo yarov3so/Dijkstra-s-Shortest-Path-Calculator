@@ -152,7 +152,7 @@ def dijkstra():
         if undirected_yn=="yes":
             st.markdown(f"Out-neighbourhood of \"{current}\":")
         else:
-            st.markdown(f"Neighbourhoof of \"{current}\":"
+            st.markdown(f"Neighbourhoof of \"{current}\":")
         st.json(graph[current])
 
         for node in set(graph[current]).intersection(set(dist_unexp.keys())):
