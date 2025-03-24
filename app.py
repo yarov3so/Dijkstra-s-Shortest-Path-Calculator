@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 import copy
 
+st.set_page_config(
+    page_title="Dijkstra's Shortest Path Calculator",
+    page_icon="MHT.png", 
+)
+
 def comprehend(mystring):
     mystring = mystring.replace(" ", "")
     data_list = mystring.split(",")
